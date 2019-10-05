@@ -1,6 +1,6 @@
 ---
-name: "🐞 Bug report"
-about: Report a bug in JaCoCo
+name: '🐞 Bug report'
+about: 'Report a bug in the JaCoCo'
 title: ''
 labels: 'type: bug :bug:'
 assignees: ''
