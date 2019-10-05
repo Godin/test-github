@@ -1,6 +1,7 @@
 ---
 name: Bug report
 about: About can't be blank
+title:
 labels: "type: bug :bug:"
 
 ---
