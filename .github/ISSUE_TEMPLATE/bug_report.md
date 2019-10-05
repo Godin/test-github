@@ -1,5 +1,5 @@
 ---
-name: Bug report
+name: "\U0001F41E Bug report"
 about: About can't be blank
 title: ''
 labels: 'type: bug :bug:'
