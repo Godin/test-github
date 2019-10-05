@@ -1,6 +1,5 @@
 ---
 name: Question
+about: About can't be blank
 label: "declined: question :x:"
 ---
-
-About can't be blank
