@@ -1,7 +1,7 @@
 ---
 name: Question
 about: Please do not use Github for questions.
-title: ""
+title:
 labels: "type: question"
 
 ---
