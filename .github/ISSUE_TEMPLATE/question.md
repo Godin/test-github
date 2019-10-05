@@ -1,6 +1,6 @@
 ---
 name: Question
-about: About can't be blank
+about: Please do not use Github for questions.
 labels: "type: question"
 
 ---
