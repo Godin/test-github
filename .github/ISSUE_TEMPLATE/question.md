@@ -5,3 +5,9 @@ title:
 labels: "type: question"
 
 ---
+
+THIS IS A BUG TRACKER ONLY. FOR QUESTIONS PLEASE CHECK FAQ OR USE FORUM:
+
+https://www.jacoco.org/jacoco/trunk/doc/faq.html
+
+https://groups.google.com/forum/?fromgroups=#!forum/jacoco
