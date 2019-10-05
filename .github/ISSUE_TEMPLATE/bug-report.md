@@ -1,5 +1,6 @@
 ---
 name: Bug report
-about:
-label: "type: bug :bug:" 
+about: About can't be blank
+label: "type: bug :bug:"
+
 ---
