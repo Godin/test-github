@@ -1,6 +1,6 @@
 ---
 name: "🐞 Bug report"
-about: About can't be blank
+about: Report a bug in JaCoCo
 title: ''
 labels: 'type: bug :bug:'
 assignees: ''
