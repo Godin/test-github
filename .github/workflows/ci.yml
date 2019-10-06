@@ -4,4 +4,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - run: echo ${{ github.repository }}
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+    - name: Test
+      if: github.event == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+      run: echo Woohoo
