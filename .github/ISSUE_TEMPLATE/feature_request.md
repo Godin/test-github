@@ -1,7 +1,8 @@
 ---
 name: 'Feature request'
-title:
+title: 'Suggest a feature for JaCoCo'
 labels:
 assignes:
----
 
+---
+toto
