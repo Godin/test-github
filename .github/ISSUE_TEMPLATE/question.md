@@ -2,8 +2,8 @@
 name: '❓ Question'
 about: 'Questions and requests for support'
 title: 'PLEASE DO NOT USE GITHUB FOR QUESTIONS - CHECK FAQ OR USE FORUM'
-labels: 'type: question'
-assignees: ''
+labels:
+assignees:
 
 ---
 
