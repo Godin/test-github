@@ -1,6 +1,7 @@
 ---
 name: 'Feature request'
-title: 'Suggest a feature for JaCoCo'
+about: 'Suggest a feature for JaCoCo'
+title:
 labels:
 assignes:
 
