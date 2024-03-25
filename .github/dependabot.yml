@@ -4,3 +4,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-name: "org.ow2.asm:*"
+      - dependency-name: "com.diffplug.spotless:spotless-maven-plugin"
