@@ -1,0 +1,16 @@
+name: sync
+on:
+  schedule:
+    # TODO see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+    # every hour
+    - cron: '0 * * * *'
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          gh repo sync Godin/jacoco -b master
+          gh repo sync Godin/www.eclemma.org -b master
+          gh repo sync Godin/eclipse-eclemma -b master
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
