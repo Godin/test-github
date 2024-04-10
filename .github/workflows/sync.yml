@@ -1,0 +1,9 @@
+name: sync
+on:
+  - push
+  # TODO schedule:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh repo sync Godin/jacoco -b master
