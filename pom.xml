@@ -6,7 +6,7 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <properties>
-    <asm.version>9.6</asm.version>
+    <asm.version>9.7</asm.version>
   </properties>
 
   <dependencyManagement>
