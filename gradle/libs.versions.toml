@@ -1,5 +1,5 @@
 [versions]
-junit5 = "5.7.0"
+junit5 = "5.10.3"
 
 [plugins]
 compose = "org.jetbrains.compose:1.5.12"
