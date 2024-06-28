@@ -1,0 +1,14 @@
+name: rerun
+
+on: workflow_dispatch
+
+jobs:
+  rerun:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          gh run list --repo Godin/eclipse-eclemma -b simrel_next --limit 1
+          gh run rerun --repo Godin/eclipse-eclemma $(gh run list --repo Godin/eclipse-eclemma -b simrel_next --json databaseId --jq '.[0].databaseId')
+          gh run list --repo Godin/eclipse-eclemma -b simrel_next --limit 1
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
