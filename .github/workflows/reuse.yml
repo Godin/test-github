@@ -1,0 +1,12 @@
+on:
+  workflow_call:
+jobs:
+  reusable_job_one:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1
+  reusable_job_two:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 0
