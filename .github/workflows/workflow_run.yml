@@ -1,0 +1,17 @@
+on:
+  workflow_run:
+    workflows: [a]
+    types:
+      - completed
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event.workflow_run.conclusion }}
+      - run: echo ${{ github.event.workflow_run.head_sha }}
+      # https://docs.github.com/en/rest/checks/runs?apiVersion=2022-11-28#create-a-check-run
+      # https://docs.github.com/en/rest/commits/statuses?apiVersion=2022-11-28#create-a-commit-status
+      - run: |
+          gh api /repos/godin/test-github/statuses/${{ github.event.workflow_run.head_sha }} -f "state=success" -f "context=mergeable"
+        env:
+          GH_TOKEN: ${{ github.token }}
