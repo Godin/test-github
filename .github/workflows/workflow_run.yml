@@ -1,6 +1,6 @@
 on:
   workflow_run:
-    workflows: [sum]
+    workflows: [a]
     types:
       - completed
 jobs:
