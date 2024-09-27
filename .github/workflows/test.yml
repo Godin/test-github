@@ -1,0 +1,21 @@
+on:
+  - push
+  - pull_request
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - jdk: 17
+          - jdk: 21
+    name: JDK ${{ matrix.jdk }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo OK
+  # see https://github.com/orgs/community/discussions/4324
+  test2:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo OK
