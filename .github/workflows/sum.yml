@@ -3,29 +3,77 @@ on:
   - workflow_dispatch
   - push
 jobs:
-  one:
+  ok:
     runs-on: ubuntu-latest
     steps:
-      - run: exit 0
-  two:
-    if: false
+      - run: |
+          #sleep 20s
+          exit 0
+
+  fail:
     runs-on: ubuntu-latest
     steps:
       - run: exit 1
-  three:
+
+  skip:
+    needs: fail
     runs-on: ubuntu-latest
-    if: ${{ false }}
     steps:
-      - run: echo three
-  # https://github.com/actions/runner/issues/2566#issuecomment-1522574653
+      - run: exit 0
+
+  conditional:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 0
+
   sum:
-    needs: [one, two, three]
+    needs:
+      - ok
+#      - conditional
+#      - fail
+#      - skip
+    if: ${{ always() }}
 #    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
+    env:
+      NEEDS: ${{ toJSON(needs) }}
     steps:
-      - run: echo ${{ contains(needs.*.result, 'cancelled') || contains(needs.*.result, 'failure') }}
-      # https://docs.github.com/en/actions/learn-github-actions/contexts#example-printing-context-information-to-the-log
-      - name: Debug
+      - run: |
+          STATUS=$(echo "$NEEDS" | jq --compact-output '[.[].result] | unique')
+          if [ "$STATUS" = '["success"]' ]; then
+            exit 0
+          else
+            exit 1
+          fi
+      - run: ${{ !(contains(needs.*.result, 'skipped') || contains(needs.*.result, 'failure')) }}
         env:
-          DEBUG: ${{ toJSON(needs) }}
-        run: echo "$DEBUG"
+          DEBUG2: ${{ toJSON(needs) }}
+
+#  random:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      fail-fast: false
+#      matrix:
+#        m: [0, 1, 2, 3, 4, 5]
+#    steps:
+#      - run: |
+#          E=$(shuf -i 0-${{ matrix.m }} -n 1)
+#          exit $E
+#  # https://github.com/actions/runner/issues/2566#issuecomment-1522574653
+#  sum:
+#    needs:
+#      - ok
+#      - random
+#    if: ${{ !cancelled() }} # TODO or always?
+#    runs-on: ubuntu-latest
+#    env:
+#      DEBUG: ${{ toJSON(needs) }}
+#      STATUS: ${{ contains}}
+#    steps:
+#      - run: echo ${{ contains(needs.*.result, 'cancelled') || contains(needs.*.result, 'failure') }}
+#      # https://docs.github.com/en/actions/learn-github-actions/contexts#example-printing-context-information-to-the-log
+#      - name: Debug
+#        run: echo "$DEBUG"
+#      - run: |
+#          exit ${{ (contains(needs.*.result, 'failure') || contains(needs.*.result, 'skipped')) && 1 || 0 }}
