@@ -3,6 +3,13 @@ on:
   - push
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: ${{ vars.JDK_EA || '26-ea' }}
+#26.0.0-ea.25.0.ea
+      - run: |
+          java -version
