@@ -2,7 +2,7 @@
 junit5 = "5.7.0"
 
 [plugins]
-compose = "org.jetbrains.compose:1.5.12"
+compose = "org.jetbrains.compose:1.6.11"
 kotlin = "org.jetbrains.kotlin.jvm:1.9.22"
 
 [libraries]
